@@ -14,6 +14,9 @@ function writeLogEntry(op,prevRes,operand,result) {
 }
 
 function calcResult(calcType, mathop){
+    if(calcType !=="ADD" && calcType!=="SUBTRACT" && calcType !=="MULTIPLY" && calcType !=="DIVIDE"){
+        return;
+    }
     const calcLog = `${currentResult}`+mathop+`${userInput.value}`;
     const initialResult = currentResult;
     if (calcType ==='ADD'){
