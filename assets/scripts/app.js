@@ -14,22 +14,23 @@ function writeLogEntry(op,prevRes,operand,result) {
 }
 
 function calcResult(calcType, mathop){
-    if(calcType !=="ADD" && calcType!=="SUBTRACT" && calcType !=="MULTIPLY" && calcType !=="DIVIDE" || +userInput.value===0){
+    inputResult = +userInput.value;
+    if(calcType !=="ADD" && calcType!=="SUBTRACT" && calcType !=="MULTIPLY" && calcType !=="DIVIDE" || !inputResult){//The last condition is based on truthy and falsy values entered by the user.
         return;
     }
     const calcLog = `${currentResult}`+mathop+`${userInput.value}`;
     const initialResult = currentResult;
     if (calcType ==='ADD'){
-        currentResult += +userInput.value;
+        currentResult += inputResult;
     }else if (calcType ==='SUBTRACT'){
-        currentResult -= +userInput.value;
+        currentResult -= inputResult;
     }else if (calcType ==='MULTIPLY'){
-        currentResult *= +userInput.value;
+        currentResult *= inputResult;
     }else {
-        currentResult /= +userInput.value;
+        currentResult /= inputResult;
     }
     outputResult(currentResult, calcLog);
-    writeLogEntry(calcType,initialResult,+userInput.value,currentResult);
+    writeLogEntry(calcType,initialResult,inputResult,currentResult);
 }
 
 function sum () {
@@ -38,7 +39,7 @@ function sum () {
 }
 
 function subtract() {
-    calcResult('Subtract','-');
+    calcResult('SUBTRACT','-');
 }
 
 function multiply() {
